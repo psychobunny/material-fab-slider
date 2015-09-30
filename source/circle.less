@@ -1,0 +1,21 @@
+.circle-canvas {
+	.transform(rotate(90deg));
+}
+
+.circle {
+	stroke: @brand-primary;
+	stroke-width: 8px;
+	fill: none;
+	stroke-dasharray: 440;
+	stroke-dashoffset: 0;
+}
+
+.animated .circle {
+	.animation(rotation 1s ease-out forwards);
+}
+
+@keyframes rotation {
+	to {
+		stroke-dashoffset: -440;
+	}
+}
