@@ -1,0 +1,29 @@
+.tail-container {
+	width: 100%;
+	position: absolute;
+	bottom: @corner-padding;
+	z-index: 3;
+	
+	.tail {
+		margin-left: @corner-padding - 1 + @fab-diameter/2px;
+		margin-right: @corner-padding - 1 + @fab-diameter/2px;
+
+		.progress-bar {
+			height: 5px;
+			background-color: @brand-primary;
+			width: 0%;
+			float: right;
+		}
+	}
+}
+
+.animated .progress-bar {
+	z-index: 1;
+	animation: elongate 1.1s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes elongate {
+	0% { width: 0%; }
+	100% { width: 100%; } 
+}
