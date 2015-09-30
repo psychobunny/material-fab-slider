@@ -39,7 +39,7 @@ module.exports = function(grunt) {
 				src: ['public/lib/main.js'],
 				dest: 'public/bin/app.js',
 				options: {
-					external: ['jquery', 'templates.js', 'translator.js'],
+					external: ['jquery'],
 				}
 			}
 		},
