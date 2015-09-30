@@ -6,6 +6,11 @@ $(document).ready(function() {
 	$('.fab').on('click', function() {
 		mfs.init();
 	});
+
+	$('.slider').on('click', function() {
+		console.log('test');
+		$('.material-fab-slider').addClass('animated-backwards')
+	});
 });
 
 
