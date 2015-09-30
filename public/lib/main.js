@@ -7,7 +7,7 @@ $(document).ready(function() {
 		mfs.init();
 	});
 
-	$('.slider').on('click', function() {
+	$('.slider').on('mouseup', function() {
 		$('.material-fab-slider')
 			.removeClass('animated')
 			.addClass('animated-backwards');
