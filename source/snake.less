@@ -1,0 +1,24 @@
+.snake-canvas {
+	.transform(rotate(90deg));
+	z-index: 2;
+}
+
+.snake {
+	position: absolute;
+
+	stroke: @brand-primary;
+	stroke-width: 5px;
+	fill: none;
+	stroke-dasharray: 174;
+	stroke-dashoffset: 0;
+}
+
+.animated .snake {
+	.animation(rotation 1.1s ease-out forwards);
+}
+
+@keyframes rotation {
+	to {
+		stroke-dashoffset: -174;
+	}
+}
