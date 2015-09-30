@@ -4,7 +4,7 @@ var $ = require('jquery');
 
 $(document).ready(function() {
 	$('.fab').on('click', function() {
-		mfs.init();
+		mfs.init(currentPercentage);
 	});
 
 	$('.slider').on('touchstart', function() {
@@ -22,7 +22,7 @@ $(document).ready(function() {
 	});
 });
 
-var dragging = false, originalX;
+var dragging = false, originalX, currentPercentage;
 
 $('.slider').on('touchstart', function(ev) {
 	dragging = true;
@@ -44,15 +44,19 @@ $('body').on('touchmove', function(ev) {
 		return;
 	}
 
-	var percentage = (ev.originalEvent.touches[0].clientX - $('.progress-bar').offset().left - $('.handle').width() / 2) / $('.progress-bar').width() * 100;
+	var percentage = 100 - (ev.originalEvent.touches[0].clientX - $('.progress-bar').offset().left - $('.handle').width() / 2) / $('.progress-bar').width() * 100;
 	$('.progress-bar-empty')
 		.css({
-			width: 100 - percentage + '%'
+			width: percentage + '%'
 		});
 
 	$('.slider').css({
 			left: $('.progress-bar-empty').offset().left - $('.slider').width() / 2
 		});
+
+	currentPercentage = percentage;
+
+	$('.indicator').html(parseInt(percentage, 10));
 });
 
 
