@@ -21,6 +21,18 @@
     "animation",
     "css"
   ],
+  "devDependencies": {
+    "express": "^4.13.3",
+    "grunt": "~0.4.5",
+    "grunt-browserify": "^4.0.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-less": "^0.12.0",
+    "grunt-contrib-uglify": "^0.8.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-express-server": "^0.4.19",
+    "grunt-supervisor": "^0.2.4",
+    "jquery": "~2.1.0"
+  },
   "author": "psychobunny",
   "license": "MIT",
   "bugs": {
