@@ -21,13 +21,31 @@
 
 .animated .fab {
 	z-index: 1;
-	animation: materialize 0.5s;
+	animation: dematerialize 0.5s;
 	animation-fill-mode: forwards;
 }
 
-@keyframes materialize {
+.animated-backwards .fab {
+	z-index: 1;
+	animation: materialize 0.5s;
+	animation-fill-mode: forwards;
+	animation-delay: 0.9s;
+	box-shadow: none;
+}
+
+@keyframes dematerialize {
 	0% { box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.156863), 0px 2px 10px 0px rgba(0, 0, 0, 0.117647); }
 	40% { box-shadow: none; } 
 	99% { opacity: 1; }
 	100% { opacity: 0; }
+}
+
+@keyframes materialize {
+	0% { opacity: 0; }
+	1% { opacity: 1; }
+	60% { box-shadow: none; } 
+	100% {
+		box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.156863), 0px 2px 10px 0px rgba(0, 0, 0, 0.117647); 
+		z-index: 2;
+	}	
 }

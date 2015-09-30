@@ -8,8 +8,13 @@ $(document).ready(function() {
 	});
 
 	$('.slider').on('click', function() {
-		console.log('test');
-		$('.material-fab-slider').addClass('animated-backwards')
+		$('.material-fab-slider')
+			.removeClass('animated')
+			.addClass('animated-backwards');
+		$('.progress-bar-empty')
+			.css({
+				width: '0%'
+			})
 	});
 });
 
@@ -19,7 +24,10 @@ var mfs = {};
 mfs.init = function(initialPercentage) {
 	initialPercentage = initialPercentage || 50;
 
-	$('.material-fab-slider').addClass('animated');
+	$('.material-fab-slider')
+		.removeClass('animated-backwards')
+		.addClass('animated');
+
 	setTimeout(function() {
 		mfs.set(initialPercentage);
 	}, 500);
