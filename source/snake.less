@@ -1,11 +1,12 @@
 .snake-canvas {
 	.transform(rotate(90deg));
 	z-index: 2;
+	position: absolute;
+	bottom: @corner-padding;
+	right: @corner-padding;
 }
 
 .snake {
-	position: absolute;
-
 	stroke: @brand-primary;
 	stroke-width: 5px;
 	fill: none;
