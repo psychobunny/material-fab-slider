@@ -13,7 +13,7 @@ mfs.show = function(percentage, done) {
 
 	$('.progress-bar-empty')
 		.css({
-			width: percentage + '%'
+			width: (100 - percentage) + '%'
 		})
 		.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
 			$('.slider').css({
@@ -56,15 +56,18 @@ $('body').on('touchend', function() {
 });
 
 function onTouchMove(ev) {
-	var percentage = 100 - (ev.originalEvent.touches[0].clientX - $('.progress-bar').offset().left - $('.handle').width() / 2) / $('.progress-bar').width() * 100;
+	var width,
+		percentage = (ev.originalEvent.touches[0].clientX - $('.progress-bar').offset().left - $('.handle').width() / 2) / $('.progress-bar').width() * 100;
 
 	if (percentage < 0) {
 		percentage = 0;
 	}
 
+	width = 100 - percentage;
+
 	$('.progress-bar-empty')
 		.css({
-			width: percentage + '%'
+			width: width + '%'
 		});
 
 	$('.slider').css({
