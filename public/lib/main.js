@@ -70,9 +70,7 @@ mfs.init = function(initialPercentage) {
 		.removeClass('animated-backwards')
 		.addClass('animated');
 
-	setTimeout(function() {
-		mfs.set(initialPercentage);
-	}, 500);
+	mfs.set(initialPercentage);
 };
 
 mfs.set = function(percentage, done) {
