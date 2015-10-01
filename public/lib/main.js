@@ -5,7 +5,7 @@ var currentPercentage;
 var mfs = {};
 
 mfs.show = function(percentage, done) {
-	percentage = percentage || 50;
+	percentage = typeof percentage !== 'undefined' ? percentage : 50;
 
 	$('.material-fab-slider')
 		.removeClass('animated-backwards')
