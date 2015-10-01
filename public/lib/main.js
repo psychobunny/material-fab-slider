@@ -9,7 +9,7 @@ mfs.show = function(percentage, done) {
 
 	$('.material-fab-slider')
 		.removeClass('animated-backwards')
-		.addClass('animated');
+		.addClass('animated open');
 
 	$('.progress-bar-empty')
 		.css({
@@ -27,7 +27,10 @@ mfs.show = function(percentage, done) {
 mfs.hide = function() {
 	$('.material-fab-slider')
 		.removeClass('animated')
-		.addClass('animated-backwards');
+		.addClass('animated-backwards')
+		.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+			$(this).removeClass('open');
+		});
 	$('.progress-bar-empty')
 		.css({
 			width: '0%'

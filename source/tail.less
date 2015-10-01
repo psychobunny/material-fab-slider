@@ -8,18 +8,19 @@
 		margin-left: @side-padding - 1 + @fab-diameter/2px;
 		margin-right: @side-padding - 1 + @fab-diameter/2px;
 
-		.progress-bar {
+		.progress-bar, .progress-bar-empty {
 			height: 5px;
-			background-color: @brand-primary;
 			width: 0%;
 			float: right;
+			pointer-events: none;
+		}
+
+		.progress-bar {
+			background-color: @brand-primary;
 		}
 
 		.progress-bar-empty {
-			height: 5px;
 			background-color: #555;
-			width: 0%;
-			float: right;
 		}
 	}
 }
