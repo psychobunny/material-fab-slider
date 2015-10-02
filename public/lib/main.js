@@ -11,17 +11,19 @@ mfs.show = function(percentage, done) {
 		.removeClass('animated-backwards')
 		.addClass('animated open');
 
-	$('.progress-bar-empty')
-		.css({
-			width: (100 - percentage) + '%'
-		})
-		.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-			$('.slider').css({
-				left: $('.progress-bar-empty').offset().left - $('.slider').width() / 2
-			});
+	setTimeout(function() {		
+		$('.progress-bar-empty')
+			.css({
+				width: (100 - percentage) + '%'
+			})
+			.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
+				$('.slider').css({
+					left: $('.progress-bar-empty').offset().left - $('.slider').width() / 2
+				});
 
-			if (typeof done === 'function') { done(); }
-		});
+				if (typeof done === 'function') { done(); }
+			});
+	}, 100)
 };
 
 mfs.hide = function() {
