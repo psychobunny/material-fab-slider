@@ -15,23 +15,23 @@
 }
 
 .animated .snake {
-	.animation(rotation 0.9s ease-out forwards);
+	.animation(clockwise 0.9s ease-out forwards);
 	.animation-delay(0.25s);
 }
 
 .animated-backwards .snake {
-	.animation(rotation-reverse 0.9s ease-out forwards);
+	.animation(counter-clockwise 0.9s ease-out forwards);
 	
 	stroke-dashoffset: -174;
 }
 
-@keyframes rotation {
+@keyframes clockwise {
 	to {
 		stroke-dashoffset: -174;
 	}
 }
 
-@keyframes rotation-reverse {
+@keyframes counter-clockwise {
 	to {
 		stroke-dashoffset: 0;
 	}
