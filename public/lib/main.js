@@ -43,24 +43,25 @@ $(document).ready(function() {
 	});
 });
 
-$('.slider').on('touchstart', function(ev) {
+$('.slider').on('touchstart mousedown', function(ev) {
 	$('.material-fab-slider').addClass('dragging');
 	$('.slider').addClass('active');
-	$('body').on('touchmove', onTouchMove);
+	$(window).on('touchmove mousemove', onTouchMove);
 });
 
-$('body').on('touchend', function() {
+$(window).on('touchend mouseup', function() {
 	if ($('.material-fab-slider').hasClass('dragging')) {
 		$('.material-fab-slider').removeClass('dragging');
 		$('.slider').removeClass('active');
-		$('body').off('touchmove', onTouchMove);
+		$(window).off('touchmove mousemove', onTouchMove);
 		mfs.hide();
 	}
 });
 
 function onTouchMove(ev) {
-	var width,
-		percentage = (ev.originalEvent.touches[0].clientX - $('.progress-bar').offset().left - $('.handle').width() / 2) / $('.progress-bar').width() * 100;
+	var x = ev.originalEvent.touches ? ev.originalEvent.touches[0].clientX : ev.originalEvent.clientX,
+		percentage = (x - $('.progress-bar').offset().left - $('.handle').width() / 2) / $('.progress-bar').width() * 100,
+		width;
 
 	if (percentage < 0) {
 		percentage = 0;
@@ -78,6 +79,4 @@ function onTouchMove(ev) {
 		});
 
 	currentPercentage = percentage;
-
-	$('.indicator').html(parseInt(percentage, 10));
 }
