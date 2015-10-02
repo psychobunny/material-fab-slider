@@ -5,11 +5,15 @@ var currentPercentage;
 var mfs = {};
 
 mfs.show = function(percentage, done) {
+	if ($('.material-fab-slider').hasClass('animating')) {
+		return;
+	}
+
 	percentage = typeof percentage !== 'undefined' ? percentage : 50;
 
 	$('.material-fab-slider')
 		.removeClass('animated-backwards')
-		.addClass('animated open');
+		.addClass('animated open animating');
 
 	setTimeout(function() {		
 		$('.progress-bar-empty')
@@ -21,17 +25,23 @@ mfs.show = function(percentage, done) {
 					left: $('.progress-bar-empty').offset().left - $('.slider').width() / 2
 				});
 
+				$('.material-fab-slider').removeClass('animating');
+
 				if (typeof done === 'function') { done(); }
 			});
 	}, 100)
 };
 
 mfs.hide = function() {
+	if ($('.material-fab-slider').hasClass('animating')) {
+		return;
+	}
+
 	$('.material-fab-slider')
 		.removeClass('animated')
-		.addClass('animated-backwards')
+		.addClass('animated-backwards animating')
 		.one('webkitTransitionEnd otransitionend oTransitionEnd msTransitionEnd transitionend', function() {
-			$(this).removeClass('open');
+			$(this).removeClass('open animating');
 		});
 	$('.progress-bar-empty')
 		.css({
