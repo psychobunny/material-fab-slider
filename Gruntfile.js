@@ -13,14 +13,18 @@ module.exports = function(grunt) {
 		less: {
 			development: {
 				files: {
-					'public/bin/style.css': 'source/style.less'
+					'public/bin/style.css': 'source/style.less',
+					'dist/fab-slider.css': 'source/style.less'
+				},
+				options: {
+					'compress': true
 				}
 			}
 		},
 		uglify: {
 			js: {
 				files: {
-					'public/bin/manifest.min.js': ['public/bin/vendor.js', 'public/bin/app.js']
+					'dist/fab-slider.min.js': ['public/bin/app.js']
 				}
 			}
 		},
@@ -93,5 +97,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 
-	grunt.registerTask('default', ['express:dev', 'less', 'browserify', 'concat', 'watch']);
+	grunt.registerTask('default', ['express:dev', 'less', 'browserify', 'concat', 'uglify', 'watch']);
 };
